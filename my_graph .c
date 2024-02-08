@@ -5,21 +5,26 @@ int main ()
 int mat [10][10];
 char func;
 
-while (func != 'D'|| func!= 'EOF') // need to check because is  char 
+while (func != 'D'|| func!= EOF) // need to check because is  char 
 {
     scanf("%c", &func);
 
     if(func== 'A')
-    
+    {
+        fill_the_mat(mat);
+    }
 
-    if(func== 'B') 
+    if(func== 'B')
+    {
+        is_sortest_path(mat);
+    } 
 
-    
     if(func== 'C')
+    {
+        sortest_path(mat);
+    }
 
 }
-
-
 
 return 0;
 }
