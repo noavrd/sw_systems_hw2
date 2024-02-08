@@ -1,6 +1,11 @@
 #include <stdio.h>
 #include <my_mat.h>
 
+int min(int a, int b)
+{
+    return (a < b) ? a : b;
+}
+
 void fill_the_mat(int mat[10][10])
 {
     for (int i = 0; i < 10; i++)
@@ -10,34 +15,40 @@ void fill_the_mat(int mat[10][10])
             scanf("%d", &mat[i][j]);
         }
     }
+
+    floydWarshall(mat);
 }
 
 void floydWarshall(int mat[10][10])
 {
-    int dist[10][10];
-    int i, k, j;
-    for (i = 0; i < 10; i++)
+    for (int k = 0; k < 10; k++)
     {
-        for (j = 0; j < 10; j++)
+        for (int i = 0; i < 10; i++)
         {
-            dist[i][j] = mat[i][j];
-        }
-    }
-
-    for (k = 0; k < 10; k++)
-    {
-        for (i = 0; i < 10; i++)
-        {
-            for (j = 0; j < 10; j++)
+            if (i != k)
             {
-                if (dist[i][k] + dist[k][j] < dist[i][j])
+                for (int j = 0; j < 10; j++)
                 {
-                    dist[i][j] = dist[i][k] + dist[k][j];
+                    if (j != k)
+                    {
+                        if (i != j && mat[i][k] != 0 && mat[k][j] != 0)
+                        {
+                            int path = mat[i][k] + mat[k][j];
+
+                            if (mat[i][j] == 0)
+                            {
+                                mat[i][j] = path;
+                            }
+                            else
+                            {
+                                mat[i][j] = min(mat[i][j], path);
+                            }
+                        }
+                    }
                 }
             }
         }
     }
-    
 }
 
 void is_sortest_path(int mat[10][10])
