@@ -5,7 +5,7 @@ int main ()
 int mat [10][10];
 char func;
 
-while (func != 'D'|| func!= EOF) // need to check because is  char 
+while (func != 'D'|| func!= EOF) 
 {
     scanf("%c", &func);
 
