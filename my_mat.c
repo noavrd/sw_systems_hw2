@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <my_mat.h>
+#include "my_mat.h"
 
 int min(int a, int b)
 {
@@ -15,12 +15,7 @@ void fill_the_mat(int mat[10][10])
             scanf("%d", &mat[i][j]);
         }
     }
-
-    floydWarshall(mat);
-}
-
-void floydWarshall(int mat[10][10])
-{
+    
     for (int k = 0; k < 10; k++)
     {
         for (int i = 0; i < 10; i++)
@@ -58,13 +53,13 @@ void is_sortest_path(int mat[10][10])
     scanf("%d", &i);
     scanf("%d", &j);
 
-    if (mat[i][j] >= 0 && i != j)
+    if (mat[i][j] == 0)
     {
-        printf("TRUE\n");
+        printf("FALSE\n");
     }
     else
     {
-        printf("FALSE\n");
+        printf("TRUE\n");
     }
 }
 
