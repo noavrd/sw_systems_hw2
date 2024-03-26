@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <math.h>
-#define maxitem 5;
-#define maxweight 20;
+#define maxitem 5
+#define maxweight 20
 int min(int a, int b)
 {
     return (a < b) ? a : b;
@@ -24,13 +24,13 @@ int knapSack(int weights[], int values[], int selected_bool[])
             {
                 mat[i][j] = 0;
             }
-            else if (weight[i - 1] <= j)
+            else if (weights[i-1] <= j)
             {
-                mat[i][j] = max(mat[i - 1][j], mat[i - 1][j - weight[i - 1]] + values[i - 1]);
+                mat[i][j] = max(mat[i - 1][j], mat[i - 1][j - weights[i - 1]] + values[i - 1]);
             }
             else
             {
-                mat[i][j] = mat[i - 1][j]
+                mat[i][j] = mat[i - 1][j];
             }
         }
     }
@@ -51,14 +51,14 @@ int knapSack(int weights[], int values[], int selected_bool[])
 }
 int main()
 {
-    int selected_bool[maxitem ] = {0}
-    int names[maxitem ];
-    int values[maxitem ];
-    int weights[maxitem ];
-    for (int i = 0; i < maxitem ; i++)
+    int selected_bool[maxitem];
+    char names[maxitem];
+    int values[maxitem];
+    int weights[maxitem];
+    for (int i = 0; i < maxitem; i++)
     {
         printf("name of the item");
-        scanf("%s", &names[i]);
+        scanf("%c", &names[i]);
         printf("value of the item");
         scanf("%d", &values[i]);
         printf("weight of the item");
